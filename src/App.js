@@ -1,25 +1,34 @@
-import logo from './logo.svg';
 import './App.css';
+import { Component, useState } from 'react';
+import Counter from './Counter';
 
-function App() {
+const App = () => {
+
+  const [counter, setCounter] = useState(0)
+  const [incrementValue, setIncrementValue] = useState(1)
+
+  const handleChange = (event) => {
+    setIncrementValue(Number(event.target.value))
+  }
+
+  const artir = () => {
+    setCounter(counter + incrementValue)
+  }
+
+  const azalt = () => {
+    setCounter(counter - incrementValue)
+  }
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Counter
+        counter={counter}
+        artir = {artir}
+        azalt = {azalt}
+        incrementValue = {incrementValue}
+        handleChange = {handleChange}
+      />
     </div>
-  );
+  )
 }
-
 export default App;
